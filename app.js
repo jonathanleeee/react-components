@@ -1,13 +1,11 @@
 // make a stateless component into a class component
 class GroceryListItem extends React.Component {
-  
   constructor(props) {
     super(props); 
     
     this.state = {
       done: false
     }; 
-    this.onListItemHover = this.onListItemHover.bind(this);
   }  
   
   onListItemHover() {
@@ -15,7 +13,6 @@ class GroceryListItem extends React.Component {
       done: !this.state.done
     }, function () {console.log('On list item hover invoked!')});
   }
-  
   render() {
     
     var style = {
@@ -24,7 +21,7 @@ class GroceryListItem extends React.Component {
     };  
     
     return (
-      <li style={style} onMouseEnter={this.onListItemHover}>{this.props.item}</li>  
+      <li style={style} onMouseEnter={this.onListItemHover.bind(this)}>{this.props.item}</li>  
     )
   } 
 }
